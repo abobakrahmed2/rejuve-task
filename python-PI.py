@@ -4,7 +4,7 @@ import time
 
 app = Flask(__name__)
 
-# Function to calculate Pi using Leibniz's formula
+# Function to calculate Pi
 def calculate_pi():
     n = 1000000
     pi = 0
