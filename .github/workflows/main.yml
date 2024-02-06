@@ -26,6 +26,11 @@ jobs:
           # Replace this with your deployment script or Kubernetes commands
           kubectl apply -f dev/kubernetes-manifests
       
+      - name: Run load test on dev environment
+        run: |
+          # Replace this with the command to run loadtest.py
+          python loadtest.py
+
   build-and-deploy-prod:
     runs-on: ubuntu-latest
     steps:
