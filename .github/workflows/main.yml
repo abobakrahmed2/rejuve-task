@@ -24,7 +24,7 @@ jobs:
       - name: Deploy to dev environment
         run: |
           # Replace this with your deployment script or Kubernetes commands
-          kubectl apply -f dev/kubernetes-manifests
+          # kubectl apply -f dev/kubernetes-manifests
       
       - name: Run load test on dev environment
         run: |
@@ -49,4 +49,4 @@ jobs:
       - name: Deploy to prod environment
         run: |
           # Replace this with your deployment script or Kubernetes commands
-          kubectl apply -f prod/kubernetes-manifests
+          # kubectl apply -f prod/kubernetes-manifests
