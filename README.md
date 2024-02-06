@@ -1,48 +1,19 @@
-CI/CD Pipeline for Dockerized Application
-Overview
-This repository contains the source code and configuration files for setting up a CI/CD pipeline to build, test, and deploy a Dockerized application. The pipeline is designed to facilitate continuous integration and continuous deployment, ensuring efficient development workflows and reliable software releases.
+CI/CD Pipeline for Dockerized Application Overview This repository contains the source code and configuration files for setting up a CI/CD pipeline to build, test, and deploy a Dockerized python application. The pipeline is designed to facilitate continuous integration and continuous deployment, ensuring efficient development workflows and reliable software releases.
 
-Features
-Dockerized application with a simple HTTP web page.
-CI/CD pipeline configured with GitLab CI/CD.
-Automated build and testing of the application.
-Deployment to development and production environments.
-Load balancing between multiple container instances using a proxy server.
+Features • Dockerized application with a simple HTTP web page. • CI/CD pipeline configured with GitLab CI/CD. • Automated build and testing of the application. • Deployment to development and production environments. • Load balancing between multiple container instances using a proxy server.
+
 Project Structure
-graphql
-Copy code
-.
-├── app/                    # Source code for the Dockerized application
-│   ├── Dockerfile          # Dockerfile for building the application image
-│   ├── app.py              # Python script for the HTTP web page
-│   └── loadtest.py
-├── .gitlab-ci.yml          # GitLab CI/CD configuration file
-├── docker-compose.yml      # Docker Compose file for defining services
-└── README.md               # Project README file (you are here)
-Setup Instructions
-Clone the repository:
 
-bash
-Copy code
-git clone https://github.com/yourusername/ci-cd-pipeline.git
-cd ci-cd-pipeline
-Configure GitLab CI/CD variables for Docker registry credentials, environment configuration, etc.
+. ├── app/ # Source code for the Dockerized application │ ├── Dockerfile # Dockerfile for building the application image │ ├── app.py # Python script for the HTTP web page │ └── ... ├── .gitlab-ci.yml # GitLab CI/CD configuration file ├── docker-compose.yml # Docker Compose file for defining services └── README.md # Project README file (you are here)
 
-Push changes to the repository to trigger the CI/CD pipeline.
+Setup Instructions 1. Clone the repository: https://github.com/abobakrahmed2/rejuve-task.git
 
-Access the application via the provided URL for the development and production environments.
+Assignment questions: 1. What technologies and approaches would you use if you had to host this application on AWS? on GCP? Prefer using AWS with ec2 instance
 
-CI/CD Pipeline Workflow
-Build Stage: The Docker image is built from the source code using the Dockerfile.
-
-Test Stage: Automated tests are run to validate the functionality of the application.
-
-Deploy to Dev: The Docker image is deployed to the development environment for testing.
-
-Manual Approval: Manual approval is required before deploying to the production environment.
-
-Deploy to Prod: Upon approval, the Docker image is deployed to the production environment.
-
-Contributing
-Contributions to this project are welcome! To contribute, please fork the repository, make your changes, and submit a pull request.
-
+2. What common techniques and best practices do you know for writing a Dockerfile.?
+   Official base image, minimize layers by reduce number of layers, use COPY command or ADD, use ENV and Test dockerfile by running locally.
+   
+3. What git branching strategy do you know and what are the best ones to use? What would you point out to write CI/CD pipelines more efficiently?
+   Depends on needs and use cases, in this task use feature branch strategy, each new feature or task is developed in its own branch. Once completed, the branch is merged back into the main development branch (e.g., dev or main)
+4. Describe in your own words the pros and cons of using serverless architecture or microservice architecture in a project, what pros and cons and risks each of them entails.
+   There’s a lot of diiferences between them depends on scalaibility, cost efficiency and operation over-load.
