@@ -1,3 +1,5 @@
+CI/CD Pipeline for Dockerized Application
+Overview
 This repository contains the source code and configuration files for setting up a CI/CD pipeline to build, test, and deploy a Dockerized application. The pipeline is designed to facilitate continuous integration and continuous deployment, ensuring efficient development workflows and reliable software releases.
 
 Features
