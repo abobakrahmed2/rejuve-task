@@ -1,0 +1,47 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Build Docker image
+        run: docker build -t myapp:dev .
+      
+      - name: Push Docker image to Docker Hub
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker tag myapp:dev ${{ secrets.DOCKER_REGISTRY }}/myapp:dev
+          docker push ${{ secrets.DOCKER_REGISTRY }}/myapp:dev
+      
+      - name: Deploy to dev environment
+        run: |
+          # Replace this with your deployment script or Kubernetes commands
+          kubectl apply -f dev/kubernetes-manifests
+      
+  build-and-deploy-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Build Docker image
+        run: docker build -t myapp:prod .
+      
+      - name: Push Docker image to Docker Hub
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker tag myapp:prod ${{ secrets.DOCKER_REGISTRY }}/myapp:prod
+          docker push ${{ secrets.DOCKER_REGISTRY }}/myapp:prod
+      
+      - name: Deploy to prod environment
+        run: |
+          # Replace this with your deployment script or Kubernetes commands
+          kubectl apply -f prod/kubernetes-manifests
