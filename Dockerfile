@@ -1,11 +1,11 @@
-# Use an official Python runtime as a parent image
+ Use an official Python runtime as a parent image
 FROM python:3.9-slim
 
 # Set the working directory in the container
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app
-COPY . /app
+COPY app /app
 
 # Install any needed dependencies specified in requirements.txt
 RUN pip install --no-cache-dir flask
@@ -18,3 +18,7 @@ ENV FLASK_APP app.py
 
 # Run app.py when the container launches
 CMD ["flask", "run", "--host=0.0.0.0"]
+
+
+# Run loadtest.py during the image build process
+RUN python loadtest.py
